@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
+
+
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+
+
+        }
+
+        .f {
+            font-size: 24px;
+            font-style: italic;
+            /* box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px; */
+
+        }
+
+        .player-1:hover{
+            
+        }
+
+
+        .player-1 {
+            margin-top: 30px;
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            color: #bc2e1e;
+            text-shadow:
+                0 1px 0px #378ab4,
+                1px 0 0px #5dabcd,
+                1px 2px 1px #378ab4,
+                2px 1px 1px #5dabcd,
+                2px 3px 2px #378ab4,
+                3px 2px 2px #5dabcd,
+                3px 4px 2px #378ab4,
+                4px 3px 3px #5dabcd,
+                4px 5px 3px #378ab4,
+                5px 4px 2px #5dabcd,
+                5px 6px 2px #378ab4,
+                6px 5px 2px #5dabcd,
+                6px 7px 1px #378ab4,
+                7px 6px 1px #5dabcd,
+                7px 8px 0px #378ab4,
+                8px 7px 0px #5dabcd;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .aii {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+
+        button {
+            height: 60px;
+            width: 150px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        button:hover {
+            filter: brightness(2);
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        button.rock {
+            background-color: #3498db;
+            color: #fff;
+            background-image: url(./image/1.png);
+            background-size: cover;
+        }
+
+        button.scissors {
+            background-color: #e74c3c;
+            color: #fff;
+            background-image: url(./image/3.png);
+            background-size: cover;
+        }
+
+        button.paper {
+            background-color: #2ecc71;
+            color: #fff;
+            background-image: url(./image/2.png);
+            background-size: cover;
+        }
+
+        .footer {
+            width: 60%;
+            height: 400px;
+            border-radius: 40% 0 40% 0;
+            background-image: url(./image/ROCK\ PAPER\ SCISSORS\ by\ miizoshop.jpg);
+            background-size: 30%;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            opacity: 0.7;
+        }
+
+        .result {
+            height: 80px;
+            width: 80px;
+
+            margin: auto;
+        }
+
+        .aii {
+            height: 40px;
+            width: 80px;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="player-1">
+        Player 1
+    </div>
+    <p class="f">請出拳!!!✊✌✋</p>
+    <button class="rock" value="0"></button>
+    <button class="scissors" value="1"></button>
+    <button class="paper" value="2"></button>
+    <p id="aiii">AI:</p>
+    <div class="aii"></div>
+
+    <p id="re">結果:</p>
+    <div class="result"></div>
+
+    <div class="footer"></div>
+
+    <script>
+        let rock = document.querySelector('.rock');
+        let scissors = document.querySelector('.scissors');
+        let paper = document.querySelector('.paper');
+        let aii = document.querySelector('.aii');
+        let resultAll = document.querySelector('.result');
+
+        rock.addEventListener('click', function () {
+            let aii_result = Math.floor(Math.random() * 3);
+            console.log(aii_result);
+            aii.innerHTML = aii_result;
+            if (aii_result === 0) {
+                aii.innerHTML = "石頭";
+                resultAll.innerHTML = "平手&#128528;";
+            } else if (aii_result === 1) {
+                aii.innerHTML = "剪刀";
+                resultAll.innerHTML = "你贏了&#128513;";
+            } else if (aii_result === 2) {
+                aii.innerHTML = "布";
+                resultAll.innerHTML = "我輸了&#129324;";
+            }
+
+
+
+
+
+        });
+
+        scissors.addEventListener('click', function () {
+            let aii_result = Math.floor(Math.random() * 3);
+            console.log(aii_result);
+            aii.innerHTML = aii_result;
+            if (aii_result === 0) {
+                aii.innerHTML = "石頭";
+                resultAll.innerHTML = "我輸了&#129324;";
+            } else if (aii_result === 1) {
+                aii.innerHTML = "剪刀";
+                resultAll.innerHTML = "平手&#128528;";
+            } else if (aii_result === 2) {
+                aii.innerHTML = "布";
+                resultAll.innerHTML = "你贏了&#128513;";
+            }
+        });
+
+        paper.addEventListener('click', function () {
+            let aii_result = Math.floor(Math.random() * 3);
+            console.log(aii_result);
+            aii.innerHTML = aii_result;
+            if (aii_result === 0) {
+                aii.innerHTML = "石頭";
+                resultAll.innerHTML = "你贏了&#128513;";
+            } else if (aii_result === 1) {
+                aii.innerHTML = "剪刀";
+                resultAll.innerHTML = "我輸了&#129324;";
+            } else if (aii_result === 2) {
+                aii.innerHTML = "布";
+                resultAll.innerHTML = "平手&#128528;";
+            }
+        });
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
